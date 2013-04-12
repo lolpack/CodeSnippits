@@ -31,7 +31,9 @@ class Board(object):
         return [pos for pos in range(9) if self.moves[pos] == self.free_Move]
 
     def gameOver(self):
+        "Determines if game is over"
         return bool(self.winner()) or not self.getValidMoves()
+
     def clear(self):
         """Clears board"""
         self.moves = [self.free_Move]*9
@@ -44,6 +46,7 @@ class Player(object):
         self.piece = piece
 
     def getMove(self):
+        "Takes move as input and puts it into makeMove"
         print("Move Player %s" % self.piece)
         move = int(input())
         if -1 < move < 9:
@@ -58,10 +61,9 @@ class Player(object):
             print("That's not a valid move")
 
     def makeMove(self, move):
+        "Makes move for player"
         self.moves[move] = self.piece
 
-    def __str__(self):
-        return "Player " + self.piece
 
 class Game(object):
     """ Represents the tic tac toe game itself. Use this to initialize the game"""
@@ -80,11 +82,13 @@ The Game board is as follows:
         self._currentTurn = self.playerX
 
     def _swapCurrentTurn(self):
+        "Switch turns"
         if self._currentTurn == self.playerX:
             self._currentTurn = self.playerO
         else: self._currentTurn = self.playerX
 
     def start(self):
+        "Starts game"
         print(Game._welcome_mes)
         while not self.isGameOver():
             print("Turn: " + str(self._currentTurn))
@@ -93,6 +97,7 @@ The Game board is as follows:
         self._atGameEnd()
 
     def _atGameEnd(self):
+        "Prints winner, runs restart method"
         print(self.board.winner() + " has won the game")
         print("Would you like to play again?")
         answer = input()
@@ -100,11 +105,13 @@ The Game board is as follows:
             self._restart()
 
     def _restart(self):
+        "restarts game"
         self.board.clear()
         self.playerX = Player('x', self.board.moves)
         self.playerO = Player('o', self.board.moves)
         self._currentTurn = self.playerX
         self.start()
 
-    def isGameOver(self):                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+    def isGameOver(self):
+        "Gets gameOver to determine if game is over"
         return self.board.gameOver()
