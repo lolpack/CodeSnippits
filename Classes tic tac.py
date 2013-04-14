@@ -53,7 +53,9 @@ class Player(object):
             for i in self.moves[move]:
                 if i == ' ':
                     self.makeMove(move)
-                    print(self.moves)
+                    print(self.moves[0:3])
+                    print(self.moves[3:6])
+                    print(self.moves[6:10])
                     return True
                 else:
                     print("That's not a valid move")
@@ -63,6 +65,10 @@ class Player(object):
     def makeMove(self, move):
         "Makes move for player"
         self.moves[move] = self.piece
+
+    def __str__(self):
+        "Makes player a string"
+        return "Player " + self.piece
 
 
 class Game(object):
@@ -91,7 +97,7 @@ The Game board is as follows:
         "Starts game"
         print(Game._welcome_mes)
         while not self.isGameOver():
-            print("Turn: " + str(self._currentTurn))
+            print("Turn: {}".format(str(self._currentTurn)))
             if self._currentTurn.getMove():
                 self._swapCurrentTurn()
         self._atGameEnd()
