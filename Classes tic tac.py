@@ -44,15 +44,16 @@ class Player(object):
     def __init__(self, piece, moves):
         self.moves = moves
         self.piece = piece
+        self.move = ''
 
     def getMove(self):
         "Takes move as input and puts it into makeMove"
         print("Move Player %s" % self.piece)
-        move = int(input())
-        if -1 < move < 9:
-            for i in self.moves[move]:
+        self.move = int(input())
+        if -1 < self.move < 9:
+            for i in self.moves[self.move]:
                 if i == ' ':
-                    self.makeMove(move)
+                    self.makeMove(self.move)
                     print(self.moves[0:3])
                     print(self.moves[3:6])
                     print(self.moves[6:10])
@@ -104,7 +105,11 @@ The Game board is as follows:
 
     def _atGameEnd(self):
         "Prints winner, runs restart method"
-        print(self.board.winner() + " has won the game")
+        winner = self.board.winner()
+        if winner is None:
+            print('No one has won the game')
+        else:            
+            print(self.board.winner() + " has won the game")
         print("Would you like to play again?")
         answer = input()
         if str(answer).lower() in ["yes", "y", "yeah"]:
