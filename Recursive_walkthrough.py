@@ -1,5 +1,6 @@
 #By Aaron Pollack
 #Wrtitten in Python 2.7.3
+#Write all of the files in a given directory to a file
 
 import os
 
@@ -7,13 +8,17 @@ def WriteDirectoryNames(filepath):
     for dirname, dirnames, files in os.walk(filepath):
         for subdir in dirnames:
             f = open("/Users/offwhitepaintball/Desktop/Python Class/Aaron's personal/Test Folder/Dirnames.txt" , 'a+')
-            f.write(subdir + '\n')
+            f.write('Directory: ' + subdir + ':' + '\n')
+            for i in files:
+                f.write('Files: ' + i + ',')
+            f.write('\n')
             f.close()
-            print subdir
+            print "subdir:" + subdir
             filepath = os.path.join(dirname,subdir)
-            print filepath
+            print files
+            print 'filepath' + filepath
             os.chdir(filepath)
-            WriteDirectoryNames(filepath)
+            WriteDirectoryNames(filepath) #Continue into any subdirectories
             
  
 
@@ -22,5 +27,5 @@ def WriteDirectoryNames(filepath):
 
 
 
-x = "/Users/offwhitepaintball/Desktop"
-WriteDirectoryNames('.')
+x = "/Users/YOUR_DIRECTORY_HERE"
+WriteDirectoryNames(x)
