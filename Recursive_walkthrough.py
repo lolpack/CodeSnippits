@@ -7,7 +7,7 @@ import os
 def WriteDirectoryNames(filepath):
     for dirname, dirnames, files in os.walk(filepath):
         for subdir in dirnames:
-            f = open("/Users/offwhitepaintball/Desktop/Python Class/Aaron's personal/Test Folder/Dirnames.txt" , 'a+')
+            f = open("/YOUR_DIRECTORY_HERE/Dirnames.txt" , 'a+')
             f.write('Directory: ' + subdir + ':' + '\n')
             for i in files:
                 f.write('Files: ' + i + ',')
