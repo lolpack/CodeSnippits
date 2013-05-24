@@ -40,7 +40,6 @@ def save():
         cur = con.cursor()
         cur.execute("INSERT INTO {}(First,Last,Phone,Email,Other) \
             VALUES ('{}','{}','{}','{}','{}');".format(tableName, Firstent.get(),Lastent.get(),PhoneEnt.get(),Emailent.get(),Otherent.get()))
-    refreshList()
 
     
 def search(*args):
