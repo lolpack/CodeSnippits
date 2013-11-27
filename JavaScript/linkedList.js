@@ -1,10 +1,5 @@
 //Linked List
-
-//LinkedList()
-
-//ll.insert()
-//ll.delete()
-//ll.print
+//By Aaron Pollack
 
 
 var LinkedList = function () {
