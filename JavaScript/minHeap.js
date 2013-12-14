@@ -7,7 +7,7 @@ function MinHeap () {
 }
 
 MinHeap.prototype.insert = function (value) {
-	if (this._heap.length === 0) {
+	if (this._heap.length === 0) { //Not using index position 0 for heap so I can access with N/2
 		this._heap[1] = value;
 		lastIn = 1;
 	} else {
@@ -31,10 +31,10 @@ MinHeap.prototype.insert = function (value) {
 }
 
 MinHeap.prototype.peek = function () {
-	return this._heap[1];
+	return this._heap[1]; //Return the lowest value in heap
 }
 
-//TEST//
+////////TEST/////////
 
 var minHeap = new MinHeap();
 minHeap.insert(2);
