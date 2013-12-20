@@ -1,14 +1,14 @@
 //Stack in JS
 
 var Stack = function () {
-	this.head = null
+	this.head = null //Stack starts with empty head
 };
 
 Stack.prototype.push = function (data) {
-	if (this.head === null) {
+	if (this.head === null) { //If stack is empty add first item to the head
 		var newItem = {data: data, prev: null};
 		this.head = newItem;
-	} else {
+	} else { // If not empty, move current head to nextItem, set new value as head
 		var temp = this.head
 		var nextItem = {data: data, prev: temp};
 		this.head = nextItem;
@@ -16,7 +16,7 @@ Stack.prototype.push = function (data) {
 };
 
 Stack.prototype.pop = function (callback) {
-	if (this.head === null || !this.head.hasOwnProperty('prev')) {
+	if (this.head === null || !this.head.hasOwnProperty('prev')) { //If head is empty 'underflow'
 		return callback("Underflow", null);
 	} else {
 		var popped = this.head.data;
