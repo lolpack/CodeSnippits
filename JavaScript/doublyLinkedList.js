@@ -1,33 +1,33 @@
 // Doubly Linked List
 
-var LinkedList = function () {
-	this.head = null;
+var LinkedList = function () { // Keep track of front and back object
+	this.head = null; 
 	this.tail = null;
 };
 
-LinkedList.prototype.append = function(value) {
-	if (this.head === null) {
+LinkedList.prototype.append = function(value) { //Add item to the end of the linked list
+	if (this.head === null) { //If empty, make object literal with value as head and tail
 		var newNode = {data: value, next: null, prev: null};
 		this.head = newNode
 		this.tail = newNode
 	} else {
 		var temp = this.head;
-		while(temp.next !== null) {
-			temp = temp.next;
+		while(temp.next !== null) { //Find the first object to have a null next pointer
+			temp = temp.next; 
 
 		}
 		
-		var nextNode = {data: value, next: null, prev: temp};
+		var nextNode = {data: value, next: null, prev: temp}; //Create new node as object literal
 		temp.next = nextNode;
-		this.tail = nextNode;
+		this.tail = nextNode;//New node is now the tail
 	}
 };
 
-LinkedList.prototype.prepend = function(value) {
+LinkedList.prototype.prepend = function(value) {// Add item to the front of the linked list
 	if (this.head === null) {
-		this.head = {data: value, next: null, prev: null};
+		this.head = {data: value, next: null, prev: null};//If head is empty, only need to update  head
 	} else {
-		var nextNode = {data: value, next: null, prev: null};
+		var nextNode = {data: value, next: null, prev: null}; //Else set the new object literal as head with pointer to old head
 		var oldNode = this.head;
 		nextNode.next = this.head;
 		this.head = nextNode;
@@ -35,32 +35,20 @@ LinkedList.prototype.prepend = function(value) {
 	}
  }
 
-LinkedList.prototype.del = function (index) {
-	if (this.head === null) {
-		return console.log('No items to delete');
-	} else {
-		var temp = this.head;
-		while (temp.next.next !== null) {
-			console.log(temp)
-			temp = temp.next;
-		}
-		temp.next = temp.next.next;
-	}
-};
 
 LinkedList.prototype.pop_front = function(func) {
-	var newFront = this.head.next;
+	var newFront = this.head.next; //Find the next value from the head
 
-	var oldFront = this.head;
-	newFront.prev = null;
-	this.head = newFront;
+	var oldFront = this.head; //set the head to a temp variable so it can be removed
+	newFront.prev = null; //Set pointed to old head to be null
+	this.head = newFront; 
 	return func(oldFront.data);
 };
 
 LinkedList.prototype.pop_back = function(func) {
-	var oldTail = this.tail;
+	var oldTail = this.tail; //Create temp variable for old tail
 	var newTail = oldTail.prev
-	newTail.next = null
+	newTail.next = null //Set pointed from soon to be new tail to null
 	this.tail = newTail
 	return func(oldTail.data);
 
