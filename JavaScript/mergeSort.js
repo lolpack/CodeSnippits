@@ -1,6 +1,6 @@
 //Merge Sort JavaScript
-/*Simple merge sort using a second array to store new sorted data
-before it's return*/
+/*Simple merge sort using a second array to store newly sorted data
+before it's returned*/
 
 function mergeSort(array) {
 	if (array.length < 2) {
