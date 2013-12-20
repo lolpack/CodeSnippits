@@ -33,8 +33,8 @@ Queue.prototype.dequeue = function (callback) {
 	if (this.tail === null) {
 		return callback("Empty", null)
 	} else {
-		var temp = this.tail;
-		this.tail = this.tail.next;
+		var temp = this.tail; //First item in... to be returned
+		this.tail = this.tail.next; //Second item in now the tail
 		this.len --;
 		return callback(null, temp.data);
 	}
