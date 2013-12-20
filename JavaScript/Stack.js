@@ -56,3 +56,4 @@ st.push(45);
 st.push(45);
 st.push(45);
 console.log(st3);
+console.log(st);

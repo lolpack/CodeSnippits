@@ -27,23 +27,20 @@ BST.prototype.add = function(value) {
 		while (!AlreadyIn) {
 			if (value === current.data) {
 				AlreadyIn = true;
-			}
-
-			else if (value < current.data) {
+			} else if (value < current.data) {
 
 				if (current.left === null) {
 					current.left = node;
 					AlreadyIn = true;
-					this.Lheight ++ ;
-				}
-				else {
+					this.Lheight++;
+				} else {
 					current = current.left;
 				}
 			} else if (value > current.data) {
 				if (current.right === null) {
 					current.right = node;
 					AlreadyIn = true;
-					this.Rheight ++ ;
+					this.Rheight++;
 
 				} else {
 					current = current.right;
@@ -51,10 +48,6 @@ BST.prototype.add = function(value) {
 			}
 		}
 	}
-};
-
-BST.prototype.addArray = function(array) {
-	array.forEach(this.add, this);
 };
 
 BST.prototype.contains = function(value) {
@@ -85,15 +78,15 @@ BST.prototype.height = function() {
 
 BST.prototype.size = function() {
 	var toBeRet = this.array.length;
-	for (i=0; i <  this.array.length; i ++ ){ 
-		if (this.array[i] === null || undefined ){
-			toBeRet --;
+	for (i = 0; i < this.array.length; i++) {
+		if (this.array[i] === null || undefined) {
+			toBeRet--;
 		}
 	}
 	return toBeRet
 };
 
-BST.prototype.remove = function (value) {
+BST.prototype.remove = function(value) {
 	if (this.head === null) {
 		return console.log("No tree exists");
 	} else if (!this.contains(value)) {
@@ -119,18 +112,18 @@ BST.prototype.remove = function (value) {
 				} else if (current.left != null) { //If  node has a lift child, extend the parent of the node to the left node
 					if (right.right === current) {
 						right.right = current.left;
+					} else {
+						right.left = current.left;
+					}
 				} else {
-					right.left = current.left;
-				}
-				} else {
-					if (left.right === current) {// If right node has a right child, extend the parent of the node to the right child
+					if (left.right === current) { // If right node has a right child, extend the parent of the node to the right child
 						left.right = current.right;
-				} else {
-					left.left = current.right;
+					} else {
+						left.left = current.right;
+					}
 				}
-				} 
 
-			} 
+			}
 		}
 		return false;
 	}
@@ -138,7 +131,7 @@ BST.prototype.remove = function (value) {
 
 ////TEST CODE
 
-var b = new BST([43,1,23,11223,7,83,1,2,345,77,1,2,3,45,6,8,9,101,74,23, null]);
+var b = new BST([43, 1, 23, 11223, 7, 83, 1, 2, 345, 77, 1, 2, 3, 45, 6, 8, 9, 101, 74, 23, null]);
 
 
 console.log(b.head);
