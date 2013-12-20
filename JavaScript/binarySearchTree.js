@@ -136,7 +136,7 @@ BST.prototype.contains = function(value) {
 			return false;
 		}
 	}
-
+};
 	////TEST CODE
 
 	var b = new BST([43, 1, 23, 11223, 7, 83, 1, 2, 345, 77, 1, 2, 3, 45, 6, 8, 9, 101, 74, 23, null]);
