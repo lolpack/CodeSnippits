@@ -11,20 +11,20 @@ As with your stack implementation, you are not allowed to use the JavaScript arr
 
 var Queue = function () {
 	this.head = null;
-	this.len = 0;
+	this.len = 0; 
 	this.tail = null;
 };
 
 Queue.prototype.enqueue = function (data) {
-	if (this.head === null) {
+	if (this.head === null) { //If queue empty set it as head and tail
 		var node = {data: data, next: null}
 		this.head = node;
 		this.tail = node;
 		this.len = 1;
 	} else {
 		var temp = this.head;
-		this.head = {data: data, next: null} ;
-		temp.next = this.head;
+		this.head = {data: data, next: null} ; //Else set new data in object literal as head. 
+		temp.next = this.head; //Make old head new next item
 		this.len ++;
 	}
 };
