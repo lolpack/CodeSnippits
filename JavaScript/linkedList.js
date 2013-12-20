@@ -23,27 +23,28 @@ LinkedList.prototype.del = function (index) {
 	if (this.head === null) {
 		return console.log('No items to delete'); //Check to see if there's data in the list
 		
-	else if (index === 0) {
+	} else if (index === 0) {
                 this.head.data = this.head.next.data; //If first index then set head to next to next.next, skippinging middel value
                 this.head.next = this.head.next.next;
         }  else {
 		var count = 0; //Keep track of how many times you traverse through the linked list
                 var temp = this.head;
                 while (count <= index) {
-                        if (count === index) {
+                        if (count === index) { 
                                 temp.data = temp.next.data;
                                 temp.next = temp.next.next;
                                 count++;
                         }
                         else {
                                 if (count+1 === index) {
-                                        temp.next = null;
+                                        temp.next = temp.next.next; //Traverses n count number of times then updates the next point to next.next
                                         break;
                                 }
                                 temp = temp.next;
                                 count++;
 
                         }
+                }
 	}
 };
 
@@ -59,9 +60,10 @@ ll.insert("Entry 1");
 ll.insert("Entry 2");
 ll.insert("Entry 3");
 ll.insert("Entry 4");
-ll.del(1);
+ll.print()
+ll.del(1); //Should remove 'Entry 2'
 ll.print();
-ll.del(3);
+ll.del(2); //Should remove 'Entry 4'
 ll.insert("Entry 5")
 
 ll.print();
