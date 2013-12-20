@@ -119,15 +119,15 @@ HashTable.prototype.insert = function(key, value) {
 };
 
 HashTable.prototype.has = function(key) {
-	var insert = Math.floor(key % this.size);
+	var insert = Math.floor(key % this.size); //Use same hash function again to find proper bucket in array
 	var LL = this.array[insert];
 	if (LL.firstNode === null) {
 		return false;
 	} else {
-		var current = LL.firstNode;
+		var current = LL.firstNode; //Travese linked list looking for value
 		while (current.data !== null){
 			if (current.data.key === key) {
-				return true;
+				return true; 
 			};
 			current = current.next;
 		};
