@@ -1,4 +1,4 @@
-//Merge Sort JavaScript
+//Recursive Merge Sort JavaScript
 /*Simple merge sort using a second array to store newly sorted data
 before it's returned*/
 
