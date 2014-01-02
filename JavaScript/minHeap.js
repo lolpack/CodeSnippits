@@ -9,21 +9,22 @@ function MinHeap () {
 MinHeap.prototype.insert = function (value) {
 	if (this._heap.length === 0) { //Not using index position 0 for heap so I can access with N/2
 		this._heap[1] = value;
-		lastIn = 1;
+		lastIn = 1; //Keeps track of the last position in
 	} else {
 		var parent = lastIn > 1 ? Math.floor((lastIn)/2) : 1;
+		//Array based heap, looks for the floor of the last position in /2 or returns 1
 		if (this._heap[parent] < value) {
-			this._heap[lastIn + 1] = value;
+			this._heap[lastIn + 1] = value; //If the parent is less than new value, add new to end of array
 			lastIn ++ ;
 		} else {
 			var lastParent = lastIn + 1;
-			while (this._heap[parent] > value) {
+			while (this._heap[parent] > value) {//While the parent is greater than the value set last parent equal to new parent
 				var temp = this._heap[parent];
 
 				this._heap[lastParent] = this._heap[parent];
 				lastParent = parent;
 				this._heap[parent] = value;
-				parent = parent > 1 ? Math.floor((parent)/2) : 1;
+				parent = parent > 1 ? Math.floor((parent)/2) : 1; //Find the parent of the current parent 
 			}
 			lastIn ++ ;
 		}
